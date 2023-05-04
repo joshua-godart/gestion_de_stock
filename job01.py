@@ -11,7 +11,6 @@ class Boutique:
         self.mycursor = self.mydb.cursor()
 
 
-
     def table_product(self):
         self.mycursor.execute("CREATE TABLE produit(id int AUTO_INCREMENT PRIMARY KEY, nom VARCHAR(255), "
                               "prix int, quantité int, id_categorie int, description TEXT)")
@@ -22,11 +21,11 @@ class Boutique:
         self.mydb.commit()
 
     def add_product(self):
-        produit = ("INSERT INTO produit(nom, prix, quantité, id_categorie, decription) VALUES (%s, %s, %s, %s, %s)")
+        produit = ("INSERT INTO produit(nom, prix, quantité, id_categorie, description) VALUES (%s, %s, %s, %s, %s)")
         val = (input("entrez le nom du produit :"), input("entrez le prix du produit :"),
                input("entrez la quantité du produit :"), input("entrez l'id de catégorie du produit :"),
                input("entrez la description du produit :"))
-        self.mycursor.execute(produit,val)
+        self.mycursor.execute(produit, val)
         self.mydb.commit()
 
     def read_product(self, id):
@@ -76,5 +75,5 @@ class Boutique:
 boutique = Boutique()
 #boutique.table_product()
 #boutique.table_category()
-#boutique.add_product()
+boutique.add_product()
 #boutique.add_category()
